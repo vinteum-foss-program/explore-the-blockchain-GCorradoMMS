@@ -11,7 +11,8 @@ for pubkey in $pubkeys; do
     fpubkeys+="\"$pubkey\""
 done
 
+
 multisig=$(bitcoin-cli createmultisig 1 "[$fpubkeys]")
 
-echo "$multisig"
+echo "$multisig" | jq -r '.address'
 
